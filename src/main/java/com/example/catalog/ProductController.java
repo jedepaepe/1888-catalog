@@ -3,6 +3,7 @@ package com.example.catalog;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ProductController {
@@ -31,7 +32,6 @@ public class ProductController {
 
     @PutMapping("/products/{id}")
     Product update(@RequestBody Product product, @PathVariable Long id) {
-
         return repository.findById(id)
                 .map(p -> {
                     p.setLabel(product.getLabel());
